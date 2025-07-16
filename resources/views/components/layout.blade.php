@@ -11,9 +11,20 @@
 </head>
 <body class="bg-[#121212] text-white">
     <div class="flex h-screen overflow-hidden bg-transparent">
-        <x-sidebar></x-sidebar>
+        <x-sidebar />
         <div class="flex flex-col flex-1 overflow-auto">
-            <main>{{$slot}}</main>
+            <main>
+                <x-header />
+                <div class="flex-1 overflow-auto relative z-10">
+                    <main class="max-w-7xl mx-auto py-4 px-4 lg:px-8 ">
+                        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+                            {{$slot}}
+                            {{print_r($data)}}
+                        </div>
+                    </main>
+                </div>
+                
+            </main>
         </div>
     </div>
 </body>

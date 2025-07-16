@@ -30,6 +30,6 @@ class sidebar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.sidebar',['menu'=>$this->menuNames, 'isOpen'=>$this->isOpen]);
+        return view('components.sidebar',['menu'=>$this->menuNames]);
     }
 }

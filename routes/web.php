@@ -2,15 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
-
+use App\Models\Book;
 
 Route::get('/', function () {
-    return view('ninjas.index');
+    $books= Book::all();
+    return view('ninjas.index', ["books"=>$books]);
 })->name('dashboard');
 
 
 Route::get('/ninja', function () {
-        return view('ninjas.index');
+    $books= Book::all();
+    return view('ninjas.index', ["books"=>$books]);
 })->middleware('throttle:login')->name('user');
 
 //To apply rate limitting

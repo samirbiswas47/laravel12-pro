@@ -6,22 +6,17 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class layout extends Component
+class Layout extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public $name;
-    public function __construct()
+    public array $props;
+
+    public function __construct(array $props = [])
     {
-        $this->name='Samir Biswas1';
+        $this->props = $props;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
     public function render(): View|Closure|string
     {
-        return view('components.layout', [ "name" =>$this->name]);
+        return view('components.layout', ['data' => $this->props]);
     }
 }
