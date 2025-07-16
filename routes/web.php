@@ -5,14 +5,12 @@ use App\Http\Controllers\AuthorController;
 use App\Models\Book;
 
 Route::get('/', function () {
-    $books= Book::all();
-    return view('ninjas.index', ["books"=>$books]);
+    return view('ninjas.index');
 })->name('dashboard');
 
 
 Route::get('/ninja', function () {
-    $books= Book::all();
-    return view('ninjas.index', ["books"=>$books]);
+    return view('ninjas.index');
 })->middleware('throttle:login')->name('user');
 
 //To apply rate limitting

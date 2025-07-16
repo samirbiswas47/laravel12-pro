@@ -1,12 +1,12 @@
-<div x-data="{ isOpen: true }"
+<div x-data="{ isOpen: false }"
      class="relative z-10 transition-all duration-300 ease-in-out flex-shrink-0"
      :class="isOpen ? 'w-64' : 'w-20'">
-     
+
     <div class="h-full bg-[#1e1e1e] backdrop-blur-md p-4 flex flex-col border-r border-[#2f2f2f]">
 
         {{-- Toggle Button at Top Right --}}
         <div class="flex justify-end mb-2">
-            <button 
+            <button
                 @click="isOpen = !isOpen"
                 class="p-4 rounded-lg hover:bg-[#2f2f2f] transition-colors cursor-pointer"
             >
