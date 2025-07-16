@@ -30,3 +30,5 @@ Author::create(['name'=>'samir biswas', age=>20]);
 Psy Shell v0.12.9 (PHP 8.3.6 — cli) by Justin Hileman
 > use App\Models\Book
 > Book::factory()->count(50)->create();
+
+>php artisan make:middleware IpWhitelist

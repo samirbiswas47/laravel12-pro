@@ -24,11 +24,11 @@ class AppServiceProvider extends ServiceProvider
     {
         //To limit the rate of acces
         RateLimiter::for('ratelimit', function (Request $request) {
-            return Limit::perMinute(1)->by($request->ip());
+            return Limit::perMinute(20)->by($request->ip());
         });
         
         RateLimiter::for('login', function (Request $request) {
-            return Limit::perMinute(2)->by( 
+            return Limit::perMinute(20)->by( 
                 optional($request->user())->id ?: $request->ip()
             );
         });
