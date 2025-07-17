@@ -2,21 +2,26 @@
     <nav class="text-sm text-gray-400 mb-4" aria-label="Breadcrumb">
         <ol class="list-reset flex">
             <li class="flex items-center">
-                <span class="text-white">Dashboard</span>
+                <span class="dark:text-white">Dashboard</span>
                 <span class="mx-2 text-gray-500">/</span>
             </li>
             <li class="flex items-center">
-                <a wire:navigate href="{{route('dashboard')}}" class="text-gray-400 hover:text-white">Book List</a>
+                <a wire:navigate href="{{route('dashboard')}}" class="text-gray-400 hover:text-black dark:hover:text-white">Book List</a>
                 <span class="mx-2 text-gray-500">/</span>
             </li>
             <li class="flex items-center">
-                <a wire:navigate href="{{route('user')}}" class="text-gray-400 hover:text-white">Book Create</a>
+                <a wire:navigate href="{{route('user')}}" class="text-gray-400  hover:text-black dark:hover:text-white">Book Create</a>
             </li>
         </ol>
     </nav>
     <div class="flex justify-between my-4">
         <h2 class="text-xl font-bold">Book List </h2>
-        <input class="p-1 text-black" type="text" wire:model.live.debounce.500ms="term" placeholder="Search.."/>
+        <input 
+            type="text" 
+            placeholder="Search..." 
+            class="px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring focus:ring-blue-300"
+            wire:model.live.debounce.500ms="term"
+        />
     </div>
     <div class="my-4">Search term : {{$term}}</div>
     <ul>

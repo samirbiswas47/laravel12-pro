@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashborad</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireScripts
+    @livewireStyles
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <script src="//unpkg.com/alpinejs" defer></script>
-
 </head>
-<body class="bg-[#121212] text-white">
+<body 
+    x-data="{ darkMode: localStorage.getItem('theme') === 'dark' }"
+    :class="{ 'dark': darkMode }"
+    x-init="$watch('darkMode', value => localStorage.setItem('theme', value ? 'dark' : 'light'))"
+    class="bg-white text-black dark:bg-[#121212] dark:text-white transition-colors"
+>
     <div class="flex h-screen overflow-hidden bg-transparent">
         <x-sidebar />
         <div class="flex flex-col flex-1 overflow-auto">
