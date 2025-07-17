@@ -6,11 +6,11 @@
                 <span class="mx-2 text-gray-500">/</span>
             </li>
             <li class="flex items-center">
-                <a wire:navigate href="{{route('dashboard')}}" class="text-gray-400 hover:text-black dark:hover:text-white">Book List</a>
+                <a wire:navigate href="{{route('booklist')}}" class="flex items-center text-blue-700 dark:text-blue-400 font-semibold">Book List</a>
                 <span class="mx-2 text-gray-500">/</span>
             </li>
             <li class="flex items-center">
-                <a wire:navigate href="{{route('user')}}" class="text-gray-400  hover:text-black dark:hover:text-white">Book Create</a>
+                <a wire:navigate href="{{route('bookcreate')}}" class="text-gray-400  hover:text-black dark:hover:text-white">Book Create</a>
             </li>
         </ol>
     </nav>
@@ -25,7 +25,7 @@
     </div>
     <div class="my-4">Search term : {{$term}}</div>
     <ul>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 my-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-6 my-4">
             @foreach ($books as $book)
                 <div wire:key="{{$book->id}}"  class="flex justify-between bg-[#1e293b] p-4 rounded-xl shadow hover:shadow-lg transition duration-300 relative">
                     <div class="absolute right-2">
@@ -34,9 +34,11 @@
                         </button>
                     </div>
                     <div class="">
-                        <h3 class="text-lg font-semibold text-white mb-2">{{ $book->name }}</h3>
-                        <p class="text-sm text-gray-300">{{ $book->genre }}</p>
+                        <h3 class="text-lg font-semibold text-white mb-2">Book Name: {{ $book->name }}</h3>
+                        <p class="text-sm text-gray-300">Genre Name: {{ $book->genre }}</p>
+                        <h3 class="text-lg font-semibold text-white mb-2">Author:  {{ $book->author->name }}</h3>
                     </div>
+                    
                 </div>
             @endforeach
         </div>

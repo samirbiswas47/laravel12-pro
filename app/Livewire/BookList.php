@@ -21,9 +21,9 @@ class BookList extends Component
     public function render()
     {
         if($this->term){
-           $books= Book::where('name', 'LIKE', "%{$this->term}%")->paginate(10);
+           $books= Book::with('author')->where('name', 'LIKE', "%{$this->term}%")->paginate(10);
         }else{
-            $books= Book::paginate(10);
+            $books= Book::with('author')->paginate(10);
         }
 
 

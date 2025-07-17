@@ -21,7 +21,7 @@ class sidebar extends Component
         $this->isOpen= true;
         $this->menuNames = [
             ['label' => 'Dashboard', 'icon' => 'fas fa-home', 'route' => 'dashboard', 'key' => 1],
-            ['label' => 'Users', 'icon' => 'fas fa-users', 'route' => 'user', 'key' => 2]
+            ['label' => 'Book List', 'icon' => 'fas fa-users', 'route' => 'booklist', 'key' => 2]
         ];
     }
 
