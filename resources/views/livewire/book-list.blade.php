@@ -37,6 +37,9 @@
                         <h3 class="text-lg font-semibold text-white mb-2">Book Name: {{ $book->name }}</h3>
                         <p class="text-sm text-gray-300">Genre Name: {{ $book->genre }}</p>
                         <h3 class="text-lg font-semibold text-white mb-2">Author:  {{ $book->author->name }}</h3>
+                        @if($book->photo)
+                        <img src="{{asset('storage/' . $book->photo)  }}" class="w-20" />
+                        @endif
                     </div>
                     
                 </div>

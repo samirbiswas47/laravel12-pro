@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id')->primary();
             $table->string('name');
             $table->string('genre');
+            $table->string('photo')->nullable();
             $table->foreignId('author_id')->constrained('authors')->cascadeOnDelete();
             $table->timestamps();
         });

@@ -18,9 +18,7 @@
         <h2 class="text-xl font-bold">Book Create </h2>
     </div>
     <div>
-
-   
-        <form wire:submit="save" class="space-y-4">
+        <form wire:submit.prevent.$refresh="save" class="space-y-4">
             <div>
                 <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Name
@@ -82,7 +80,30 @@
                     <div class="error">{{$message}}</div>
                 @enderror
             </div>
-
+            <div class="">
+                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Image
+                </label>
+                <input 
+                    type="file" 
+                    placeholder="Enter name..." 
+                    wire:model="photo"
+                    class="w-[50%] px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 
+                        bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
+                        placeholder-gray-400 dark:placeholder-gray-500 
+                        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
+                        transition duration-200 ease-in-out shadow-sm "
+                />
+                <div>
+                    @if($photo)
+                    <img src="{{ $photo->temporaryUrl() }}" class="w-3/4" />
+                    @endif
+                </div>
+                
+                @error('photo')
+                    <div class="error">{{$message}}</div>
+                @enderror
+            </div>
             <button 
                 class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white 
                     text-sm font-medium rounded-lg shadow-sm transition duration-150 ease-in-out 
