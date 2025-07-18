@@ -16,26 +16,43 @@ class BookCreate extends Component
     public $genre;
     #[Rule ('integer|required|min:1|max:50')] 
     public $author_id;
-    #[Rule ('image|required')] 
+    #[Rule ('image|nullable')] 
     public $photo;
 
     public $authorList;
 
-    public function save(){
+    public function save()
+    {
+        $filepath ='';
         $this->validate();
-        $filepath= $this->photo->store("photos", "public");
-        $book= Book::create([
-            'name'=>$this->name,
-            'genre'=>$this->genre,
-            'author_id'=>$this->author_id,
-            'photo'=>$filepath
-        ]);
+        if($this->photo){
+            $filepath = $this->photo->store('photos', 'public');
+        }
         
-        info($book);
-        $this->redirect('book-list');
+        $book = Book::create([
+            'name' => $this->name,
+            'genre' => $this->genre,
+            'author_id' => $this->author_id,
+            'photo' => $filepath,
+        ]);
+
+        if($book->id){
+            info('Book created successfully: ' . $book->id);
+            session()->flash('success', 'Book created successfully!');
+            return redirect()->route('bookcreate');
+        }else{
+            info('Book creation failed:');
+            session()->flash('error', 'Something went wrong while creating the book.');
+        }
     }
     public function mount(){
         $this->authorList= Author::all();
+    }
+
+    public function resetForm(){
+        $this->name='';
+        $this->genre='';
+        $this->author_id='';
     }
 
     public function render()

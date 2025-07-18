@@ -20,10 +20,25 @@
             type="text" 
             placeholder="Search..." 
             class="px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring focus:ring-blue-300"
-            wire:model.live.debounce.500ms="term"
+            wire:model="term" wire:keyup="set('term', $event.target.value)"
         />
+         {{-- wire:model.live.debounce.500ms="term" --}}
     </div>
     <div class="my-4">Search term : {{$term}}</div>
+    <div class="my-4">
+        @if (session('success'))
+            <div class="flex items-center justify-between bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-2" role="alert">
+                <span class="block font-semibold">{{ session('success') }}</span>
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="flex items-center justify-between bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <span class="block font-semibold">{{ session('error') }}</span>
+            </div>
+        @endif
+    </div>
+
     <ul>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-6 my-4">
             @foreach ($books as $book)
@@ -38,7 +53,7 @@
                         <p class="text-sm text-gray-300">Genre Name: {{ $book->genre }}</p>
                         <h3 class="text-lg font-semibold text-white mb-2">Author:  {{ $book->author->name }}</h3>
                         @if($book->photo)
-                        <img src="{{asset('storage/' . $book->photo)  }}" class="w-20" />
+                        <img src="{{asset('storage/'.$book->photo)  }}" class="w-20" />
                         @endif
                     </div>
                     

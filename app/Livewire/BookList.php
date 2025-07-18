@@ -4,10 +4,12 @@ namespace App\Livewire;
 use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Book;
+use Livewire\Attributes\Url;
 
 class BookList extends Component
 {
     use WithPagination;
+    #[Url()]
     public $term;
 
     public function updatedTerm()
